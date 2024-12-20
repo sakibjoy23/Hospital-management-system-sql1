@@ -1,0 +1,100 @@
+Entity Design:
+
+Doctors:
+
+DoctorID (INT, PRIMARY KEY) - Unique identifier for each doctor.
+Name (VARCHAR(255)) - Doctor's full name.
+Specialization (VARCHAR(255)) - Doctor's area of expertise (e.g., Cardiology, Pediatrics).
+Phone (VARCHAR(20)) - Doctor's phone number.
+
+Patients:
+
+PatientID (INT, PRIMARY KEY) - Unique identifier for each patient.
+Name (VARCHAR(255)) - Patient's full name.
+Age (INT) - Patient's age.
+Gender (ENUM('Male', 'Female', 'Other')) - Patient's gender.
+Phone (VARCHAR(20)) - Patient's phone number.
+
+Appointments:
+
+AppointmentID (INT, PRIMARY KEY) - Unique identifier for each appointment.
+DoctorID (INT, FOREIGN KEY REFERENCES Doctors(DoctorID)) - Doctor associated with the appointment.
+PatientID (INT, FOREIGN KEY REFERENCES Patients(PatientID)) - Patient associated with the appointment.
+Date (DATE) - Date of the appointment.
+Time (TIME) - Time of the appointment.
+Status (ENUM('Booked', 'Completed', 'Cancelled')) - Status of the appointment.
+
+Departments:
+
+DepartmentID (INT, PRIMARY KEY) - Unique identifier for each department.
+Name (VARCHAR(255)) - Name of the department (e.g., Cardiology, Radiology).
+Location (VARCHAR(255)) - Location of the department within the hospital.
+
+
+-- Create Doctors table
+CREATE TABLE Doctors (
+    DoctorID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Specialization VARCHAR(255),
+    Phone VARCHAR(20)
+);
+
+-- Create Patients table
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Age INT,
+    Gender ENUM('Male', 'Female', 'Other'),
+    Phone VARCHAR(20)
+);
+
+-- Create Appointments table
+CREATE TABLE Appointments (
+    AppointmentID INT PRIMARY KEY,
+    DoctorID INT,
+    PatientID INT,
+    Date DATE,
+    Time TIME,
+    Status ENUM('Booked', 'Completed', 'Cancelled'),
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID),
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID)
+);
+
+-- Create Departments table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Location VARCHAR(255)
+);
+
+-- Insert dummy data into Doctors table
+INSERT INTO Doctors (DoctorID, Name, Specialization, Phone) VALUES
+    (1, 'John Doe', 'Cardiology', '123-456-7890'),
+    (2, 'Jane Smith', 'Pediatrics', '987-654-3210'),
+    (3, 'David Lee', 'Orthopedics', '555-123-4567'),
+    (4, 'Sarah Jones', 'Neurology', '444-555-1234'),
+    (5, 'Michael Brown', 'Dermatology', '333-444-5555');
+
+-- Insert dummy data into Patients table
+INSERT INTO Patients (PatientID, Name, Age, Gender, Phone) VALUES
+    (1, 'Alice Wonderland', 25, 'Female', '111-222-3333'),
+    (2, 'Bob Dylan', 35, 'Male', '222-333-4444'),
+    (3, 'Charlie Chaplin', 45, 'Male', '333-444-5555'),
+    (4, 'Diana Ross', 55, 'Female', '444-555-1234'),
+    (5, 'Elvis Presley', 65, 'Male', '555-666-7777');
+
+-- Insert dummy data into Appointments table
+INSERT INTO Appointments (AppointmentID, DoctorID, PatientID, Date, Time, Status) VALUES
+    (1, 1, 1, '2024-11-20', '10:00:00', 'Booked'),
+    (2, 2, 2, '2024-11-21', '11:30:00', 'Booked'),
+    (3, 3, 3, '2024-11-22', '14:00:00', 'Booked'),
+    (4, 4, 4, '2024-11-23', '15:30:00', 'Booked'),
+    (5, 5, 5, '2024-11-24', '16:00:00', 'Booked');
+
+-- Insert dummy data into Departments table
+INSERT INTO Departments (DepartmentID, Name, Location) VALUES
+    (1, 'Cardiology', 'Building A, Floor 3'),
+    (2, 'Pediatrics', 'Building B, Floor 2'),
+    (3, 'Orthopedics', 'Building A, Floor 1'),
+    (4, 'Neurology', 'Building C, Floor 4'),
+    (5, 'Dermatology', 'Building B, Floor 1');

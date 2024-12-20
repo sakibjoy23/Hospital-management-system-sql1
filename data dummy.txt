@@ -1,0 +1,31 @@
+-- Insert dummy data into Doctors table
+INSERT INTO Doctors (DoctorID, Name, Specialization, Phone) VALUES
+    (1, 'John Doe', 'Cardiology', '123-456-7890'),
+    (2, 'Jane Smith', 'Pediatrics', '987-654-3210'),
+    (3, 'David Lee', 'Orthopedics', '555-123-4567'),
+    (4, 'Sarah Jones', 'Neurology', '444-555-1234'),
+    (5, 'Michael Brown', 'Dermatology', '333-444-5555');
+
+-- Insert dummy data into Patients table
+INSERT INTO Patients (PatientID, Name, Age, Gender, Phone) VALUES
+    (1, 'Alice Wonderland', 25, 'Female', '111-222-3333'),
+    (2, 'Bob Dylan', 35, 'Male', '222-333-4444'),
+    (3, 'Charlie Chaplin', 45, 'Male', '333-444-5555'),
+    (4, 'Diana Ross', 55, 'Female', '444-555-1234'),
+    (5, 'Elvis Presley', 65, 'Male', '555-666-7777');
+
+-- Insert dummy data into Appointments table
+INSERT INTO Appointments (AppointmentID, DoctorID, PatientID, Date, Time, Status) VALUES
+    (1, 1, 1, '2024-11-20', '10:00:00', 'Booked'),
+    (2, 2, 2, '2024-11-21', '11:30:00', 'Booked'),
+    (3, 3, 3, '2024-11-22', '14:00:00', 'Booked'),
+    (4, 4, 4, '2024-11-23', '15:30:00', 'Booked'),
+    (5, 5, 5, '2024-11-24', '16:00:00', 'Booked');
+
+-- Insert dummy data into Departments table
+INSERT INTO Departments (DepartmentID, Name, Location) VALUES
+    (1, 'Cardiology', 'Building A, Floor 3'),
+    (2, 'Pediatrics', 'Building B, Floor 2'),
+    (3, 'Orthopedics', 'Building A, Floor 1'),
+    (4, 'Neurology', 'Building C, Floor 4'),
+    (5, 'Dermatology', 'Building B, Floor 1');
